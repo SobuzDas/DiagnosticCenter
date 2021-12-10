@@ -1,5 +1,4 @@
-# A Diagnosteic Center
-Managing a diagnostic center
+# Managing a diagnostic center
 - Admin User will create users with different roles
 - Admin will create all the test (for example: CBC, Lipid Profile) with cost
 - There will be an option to receive advance payment
