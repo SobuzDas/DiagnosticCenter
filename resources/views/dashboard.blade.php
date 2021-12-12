@@ -58,7 +58,7 @@
         <a class="nav-link" href="login.php">Log In</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="register.php">Registration</a>
+        <a class="nav-link" href="patient/registration.blade.php">Registration</a>
       </li>
 
 
