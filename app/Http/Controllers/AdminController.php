@@ -34,17 +34,21 @@ class AdminController extends Controller
          $r ->session()->put('useremail', $user-> email);
          $r ->session()->put('userrole', $user-> role);
 
-         return redirect()->to('dashboard');
+         return redirect()->to('admindash');
          }
 
 
 
     }
 
+
+
     function dashboard(){
         return view('dashboard');
     
     }
+
+    
 
 
     function logout()
@@ -53,6 +57,5 @@ class AdminController extends Controller
         return redirect()->to('login');
     }
 
+    }
 
-
-}

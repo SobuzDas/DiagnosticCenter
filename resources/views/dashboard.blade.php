@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" type="text/css"  href="{{ asset('web/css/style.css') }}">
 
-    <title></title>
+    <title>Homepage</title>
   </head>
   <body>
 
@@ -48,17 +48,27 @@
         </div>
       </li>
 
-       <li class="nav-item">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Login
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{{ url('login') }}">Admin Login</a>
+          <a class="dropdown-item" href="{{ url('plogin') }}">Paitent Login</a>
+        
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('registration') }}">Registration</a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="#">About Us</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="#">Contact Us</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Log In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="patient/registration.blade.php">Registration</a>
       </li>
 
 
@@ -150,7 +160,7 @@
 				    to monitor the side effects of certain medications known to affect the liver
 				    if you already have a liver disease, to monitor the disease and how well a particular treatment is working
 				    to measure the degree of scarring (cirrhosis) on the liver
-				    if you’re experiencing.</p>
+				    if youe experiencing.</p>
 				    <span id="rdmore"><a href="#">Read More</a></span>
               </div>
           </div>
