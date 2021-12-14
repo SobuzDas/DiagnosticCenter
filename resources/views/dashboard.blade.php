@@ -54,7 +54,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="{{ url('login') }}">Admin Login</a>
-          <a class="dropdown-item" href="{{ url('plogin') }}">Paitent Login</a>
+          <a class="dropdown-item" href="{{ url('plogin') }}">Patient Login</a>
         
         </div>
       </li>

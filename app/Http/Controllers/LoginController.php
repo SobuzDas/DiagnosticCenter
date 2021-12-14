@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Paitent;
+use App\Models\Patient;
 use Session;
 
 class LoginController extends Controller
@@ -14,7 +14,7 @@ class LoginController extends Controller
         $password = $r->password;
 
 
-        $user =  Paitent::where('email', '=' , $email)
+        $user =  Patient::where('email', '=' , $email)
         ->where('password', '=', $password)
         ->first();
 
@@ -34,7 +34,7 @@ class LoginController extends Controller
 }
 
 function pdashboard(){
-    return view('paitent.layouts.pdashboard');
+    return view('patient.layouts.pdashboard');
 
 }
 

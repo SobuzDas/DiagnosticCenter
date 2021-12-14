@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Session;
 
-class PaitentLoggedIn
+class PatientLoggedIn
 {
     /**
      * Handle an incoming request.

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Paitent;
+use App\Models\Patient;
 use Session;
 use Illuminate\Validation\Rule;
 
-class PaitentController extends Controller
+class PatientController extends Controller
 {
     function plogin(){
         return view('plogin');
@@ -21,7 +21,7 @@ class PaitentController extends Controller
     {
         $validated = $req->validate([
             'name' => 'required',
-            'email' => 'required | email |unique:paitents,email',
+            'email' => 'required | email |unique:patients,email',
             'password' => 'required',
             'address' => 'required',
             'birth_date' => 'required | date:format',
@@ -31,7 +31,7 @@ class PaitentController extends Controller
             ],
         ]);
 
-        $obj = new Paitent();
+        $obj = new Patient();
         $obj->name  = $req->name;
         $obj->email = $req->email;
         $obj->password = $req->password;

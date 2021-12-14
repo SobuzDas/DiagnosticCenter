@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
     <head>
-@include('paitent.includes.head')
+@include('patient.includes.head')
 </head>
   <body>
 
   <div class="container">
-  @include('paitent.includes.topbar')
+  @include('patient.includes.topbar')
 
   </div>
 
@@ -47,10 +47,10 @@
 
 
 
-@include('paitent.includes.footer')
+@include('patient.includes.footer')
 
 
-@include('paitent.includes.script')
+@include('patient.includes.script')
 
   </body>
 </html>
