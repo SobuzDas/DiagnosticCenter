@@ -18,7 +18,19 @@ Route::get('/registration', [PaitentController::class,'registration']);
 Route::post('/store', [PaitentController::class,'store']);
 Route::post('/store', [LoginController::class,'store']);
 
-Route::get('pdashboard', function(){
-    return view('patient.layouts.pdashboard');
+Route::get('/pdashboard', [LoginController::class, 'pdashboard']);
+
+Route::get('logout', [LoginController::class,'logout']);
+
+Route::group(['middleware' => 'checkloggedin'], function(){
+
+    Route::get('/admindash', [AdminController::class, 'admindash']);
 });
+
+Route::group(['middleware' => 'checkifpaitent'], function(){
+
+    Route::get('/pdashboard', [LoginController::class, 'pdashboard']);
+});
+
+
 

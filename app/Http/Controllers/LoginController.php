@@ -19,7 +19,7 @@ class LoginController extends Controller
         ->first();
 
         if(!$user){
-           return redirect()->back()->with('err_msg', 'Invalid email or password');
+           return redirect()->back()->with('err_msg', 'Register First..');
         }
         else{
 
@@ -27,8 +27,22 @@ class LoginController extends Controller
         $r ->session()->put('useremail', $user-> email);
         
 
-        /* return redirect()->to('admindash'); */
+         return redirect()->to('pdashboard');
     
     }
+
 }
+
+function pdashboard(){
+    return view('paitent.layouts.pdashboard');
+
+}
+
+
+function logout()
+{
+    Session::forget(['username', 'useremail']);
+    return redirect()->to('login');
+}
+
 }

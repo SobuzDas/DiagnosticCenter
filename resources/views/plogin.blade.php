@@ -34,8 +34,10 @@
             <strong>{{ Session::get('err_msg') }}</strong>
         </div>
         @endif
-
+        <br><br>
+        <a class="btn btn-outline-warning" href="{{ url('registration') }}">Register</a><br>
         <a class="btn btn-outline-info" href="{{ url('/') }}">Go To Home...</a>
+        
         </div>
 
        
