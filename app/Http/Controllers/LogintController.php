@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Patient;
 use Session;
 
-class LoginController extends Controller
+class LogintController extends Controller
+
 {
-    function store(Request $r){
+    function pstore(Request $r){
+
         $name = $r->name;
         $email = $r->email;
         $password = $r->password;
+        $address = $r->address;
+        $birth_date = $r->birth_date;
+        $gender = $r->gender;
 
 
         $user =  Patient::where('email', '=' , $email)
@@ -30,19 +35,16 @@ class LoginController extends Controller
          return redirect()->to('pdashboard');
     
     }
-
 }
+    function pdashboard(){
+        return view('patient.layouts.pdashboard');
+    
+    }
 
-function pdashboard(){
-    return view('patient.layouts.pdashboard');
-
-}
-
-
-function logout()
+    function logout()
 {
     Session::forget(['username', 'useremail']);
-    return redirect()->to('login');
+    return redirect()->to('plogin');
 }
-
+    
 }

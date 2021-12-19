@@ -18,45 +18,17 @@
   <nav class="navbar navbar-expand-lg mynav">
 
 
-  <a class="navbar-brand" href="#">Diagnostic Center</a>
+  <a class="navbar-brand" href="{{url('dashboard')}}">Diagnostic Center</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
     <ul class="navbar-nav ">
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="reportlist.php">Tests</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Report</a>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Lab
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Lab Automation</a>
-          <a class="dropdown-item" href="#">Laboratory</a>
-          <a class="dropdown-item" href="#">Gallery</a>
-        </div>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     
+      <li class="nav-item ">
+        <a class="nav-link" href="{{ url('plogin') }}" >
           Login
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{{ url('login') }}">Admin Login</a>
-          <a class="dropdown-item" href="{{ url('plogin') }}">Patient Login</a>
-        
-        </div>
       </li>
 
 
@@ -213,6 +185,16 @@
         </div>
       </div>
 </section>
+
+
+<footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Sobuz Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -18,7 +18,7 @@
             <p id="profile-name" class="profile-name-card"></p>
 
 
-            <form action="{{ url('store') }}" method="post" class="form-signin">
+            <form action="{{ url('pstore') }}" method="post" class="form-signin">
 
             {{ csrf_field() }}
 
@@ -26,7 +26,7 @@
                 <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
                 <input type="password" name="password" class="form-control" placeholder="Password" required>
                 
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Log in</button>
             </form>
         
             @if(Session::has('err_msg'))

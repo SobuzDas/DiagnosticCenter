@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Session;
+use DB;
 
 
 class AdminController extends Controller
@@ -34,7 +35,7 @@ class AdminController extends Controller
          $r ->session()->put('useremail', $user-> email);
          $r ->session()->put('userrole', $user-> role);
 
-         return redirect()->to('admindash');
+         return redirect()->to('adashboard');
          }
 
 
@@ -43,12 +44,14 @@ class AdminController extends Controller
 
 
 
-    function dashboard(){
-        return view('dashboard');
+    function adashboard(){
+        return view('admin.layouts.adashboard');
     
     }
 
-    
+    function addtest(){
+        return view('admin.layouts.addtest');
+    }
 
 
     function logout()
@@ -56,6 +59,12 @@ class AdminController extends Controller
         Session::forget(['username', 'useremail', 'userrole']);
         return redirect()->to('login');
     }
+
+
+    function allpatient(){
+        $patients = DB::table('patients')->get();
+          return view('admin.layouts.allpatient', compact('patients'));
+          }
 
     }
 
