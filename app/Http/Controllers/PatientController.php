@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Patient;
 use Session;
+use DB;
 use Illuminate\Validation\Rule;
 
 class PatientController extends Controller
@@ -56,6 +57,10 @@ class PatientController extends Controller
         $all = DB::table('patients')->get();
           return view('patient.layouts.ptest', compact('all'));
           }
+
+
+
+         
 } 
     
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Notification;
+use App\Notifications\ReportNotification;
 use Session;
 use DB;
 
@@ -66,5 +68,24 @@ class AdminController extends Controller
           return view('admin.layouts.allpatient', compact('patients'));
           }
 
+
+        public function reportnotification()
+    {
+        $user=User::all();
+        
+        $details=[
+            'greeting'=>'Hi',
+            'body'=>'Your Report is Ready',
+            'actiontext'=>' Patient',
+            'actionurl'=>'Hir',
+            'lastline'=>'lastlineeeeeee',
+
+
+        ];
+
+        Notification::send($user,new ReportNotification($details));
+        dd('done');
     }
+}
+
 

@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
-    <head>
+  
     <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -42,15 +42,13 @@ legend.custom-border {
   <ul class="navbar-nav ">
 <div class="collapse navbar-collapse" id="navbarNavDropdown">
     
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
+    
     <li class="nav-item">
       <a class="nav-link" href="{{url('ptest')}}">Tests</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-link" href="">Report</a>
+      <a class="nav-link" href="{{ URL::to('/report')}}">Report</a>
     </li>
 
     
@@ -62,7 +60,7 @@ legend.custom-border {
       <a class="nav-link" href="#">Contact Us</a>
     </li>
     <li class="nav-item">
-    <a class="btn btn-danger" href="{{ url('logout')}}">Logout</a>
+    <a class="btn btn-danger" href="{{ url('plogout')}}">Logout</a>
 
     </li>
 
@@ -101,38 +99,21 @@ legend.custom-border {
     </table> -->
     <div class="container">
 
-      
+    <form action="{{url('/checkout')}}" method="post">
+    {{ csrf_field() }}
         <!-- <h4>Info</h4> -->
         <div class="row">
             <div class="col-md-6">
-             <form method="POST" action="" enctype="multipart/form-data">
-                        @csrf
+             
+             
                 <fieldset class="custom-border">
                     <legend class="custom-border">Patient Information</legend>
-                       
-                    
-                            <div class="form-group">
-                              
-                                <input type="text" value="{{ session('username')}}" name="name" class="form-control" disabled>
-                            </div>
-                           
-                            <form action="">
-                            <div class="form-group">
-                                <input type="text" name="" id="" class="form-control" disabled>
-                            </div>
-                            <form action="">
-                            <div class="form-group">
-                                <input placeholder="Phone Number" type="text" name="" id="" class="form-control" disabled>
-                            </div>
-                            <form action="">
-                            <div class="form-group">
-                            <select class="form-control" name="" id="">
-                                <option value="">Select Gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
-                            </div>
-                        
+                      <div class="form-group">
+                          <input type="text" value="{{ session('username')}}" name="name" class="form-control" disabled>
+                      </div>
+                      <div class="form-group">
+                          <input type="email" name="email" id="" value="{{ session('useremail')}}" class="form-control" disabled>
+                      </div>
                     </fieldset>
                     <!-- <fieldset class="custom-border">
                     <legend class="custom-border">Select Test</legend>
@@ -142,30 +123,123 @@ legend.custom-border {
                     </select>
 
                     </fieldset> -->
-                    <div class="form-group">
-                                        <label class="small mb-1" for="inputFirstName"> choose test</label>
-                                        <select name="testname" class="form-control">
+                    <!-- <div class="form-group"> -->
+                    <fieldset class="custom-border">
+                    <legend class="custom-border">choose test</legend>
+                                        
+                                        <select name="testname" id="test" class="form-control">
                                             <option selected>Choose...</option>
                                             @foreach($tests as $t)
-                                                <option value="{{$t->id}}">{{ $t->testname }}</option>
+                                                <option value="{{$t->id}}" data-cost="{{$t->testcost}}">{{ $t->testname }} </option>
+                                                
                                             @endforeach
                                         </select>
-                                    </div>
-                </form>
+
+
+                                        
+                                        </fieldset>
+                                        <fieldset class="custom-border">
+                                        <legend class="custom-border">Payment</legend>
+
+                                        <div class="form-group" id="advance_section">
+
+                                       <input type="number" name="addpay" placeholder="Enter Payment" id="adv" class="form-control"><br>
+                                       <button class="btn btn-success" id="btn_advance">Add Payment</button>
+                                       </div>
+                                       </fieldset>
+
+
+                                       
             </div>
-            <div class="col-md-6">
+
+            <!-- table -->
+              <div class="col-md-6">
+                
+
+    
+          <table  class="table table-success table-striped">
+          <thead>
+            <th>#</th>
+              <th>NAME</th>
+              <th>COST</th>
+            </thead>
+            <tbody id ="bill"> 
+            </tbody>
+          </table>
+          <button class="btn btn-primary" type="submit">Checkout</button>
+ <!-- <table  class="table table-success table-striped">
+<thead> 
+
+  <th><input name="advance" type="number"></th>
+  <th><input type="submit" class="btn btn-info"></th>
+</thead>
+
+
+</table> -->
+
+
+
+
+<!-- new table end -->
 
 
             </div>
+            
         </div>
+        </form>
         
     </div>
 
 
-</div>
+</div><br>
 
 @include('patient.includes.script')
 
+
+<script>
+  $(document).ready(function(){
+    
+    var selected = [];
+    var global_total = 0;
+    $("#test").change(function(){
+      $("#bill").html("");
+       var test_id = $('#test').val();
+       var test_name = $('#test option:selected').text();
+       var test_cost = $('#test option:selected').data('cost');
+       var exist = selected.some(el => el.id === test_id);
+       if(!exist){
+         
+       var obj = {id: test_id, tname: test_name, cost: test_cost};
+      selected.push(obj);
+    }
+
+      var len = selected.length;
+      var total = 0;
+     
+      for(i=0; i<len; i++) {
+        var j= i+1;
+        var str = ' <tr>\
+          <td>'+j+'</td>\
+          <td><input type="text" value="'+selected[i].tname+'" name="tname[]" hidden>'+ selected[i].tname+'</td>\
+          <td><input type="number" value="'+selected[i].cost+'" name="cost[]" hidden>'+ selected[i].cost+'</td> \
+          </tr>';
+          $('#bill').append(str);
+          total = total + selected[i].cost;
+      }
+      global_total = total;
+      var str2 = '<tr><td colspan="2"> Total</td><td><b>'+total+'</b></td></tr>';
+      $('#bill').append(str2);
+    });
+
+    $("#btn_advance").click(function(e){
+      e.preventDefault();
+      var advance = $("#adv").val();
+      var payable = global_total - advance;
+      var str3 = '<tr><td colspan="2"> Total After Payment</td><td><b>'+payable+'</b></td></tr>';
+      $('#bill').append(str3);
+    });
+  });
+</script>
 
 </body>
 </html>

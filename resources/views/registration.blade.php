@@ -6,62 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Registration</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css"  href="{{ asset('web/css/style.css') }}">
+    
     
 </head>
-
+<body>
 <nav class="navbar navbar-expand-lg mynav">
 
 
-  <a class="navbar-brand" href="#">Diagnostic Center</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-    <ul class="navbar-nav ">
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-     
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('plogin') }}">
-          Login
-        </a>
-      </li>
+<a class="navbar-brand" href="{{url('/')}}">Diagnostic Center</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+  <ul class="navbar-nav ">
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+   
+    <li class="nav-item ">
+      <a class="nav-link" href="{{ url('plogin') }}" >
+        Login
+      </a>
+    </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('registration') }}">Registration</a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url('registration') }}">Registration</a>
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">About Us</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#">Contact Us</a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About Us</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="#">Contact Us</a>
+    </li>
 
 
-    </ul>
-  </div>
+  </ul>
+</div>
 </nav>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<body>
     <h1>Registration</h1>
     <div class="container text-left">
         @if(Session::has('msg'))
@@ -147,7 +129,7 @@
         </div>
     </form><br><br>
 
-    <a class="btn btn-outline-primary" href="{{ url('/') }}">Go To Home...</a>
+   
     </div>
 </body>
 

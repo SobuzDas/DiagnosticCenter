@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\LogintController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\InvoiceController;
+
 
 
 Route::get('/', function () {
@@ -39,6 +41,8 @@ Route::group(['middleware' => 'checkloggedin'], function(){
     Route::get('/edit-test/{id}',[TestController::class, 'edit']);
 Route::post('/update-test/{id}',[TestController::class, 'update']);
 Route::get('/delete-test/{id}',[TestController::class, 'delete']);
+
+Route::get('send', [AdminController::class, "reportnotification"]);
     
 });
 
@@ -49,13 +53,25 @@ Route::group(['middleware' => 'checkifpatient'], function(){
     Route::get('/pdashboard', [LogintController::class, 'pdashboard']);
     Route::get('/ptest', [TestController::class, 'ptest']);
     Route::post('/patientall',[PatientController::class, 'patientall']);
+    Route::post('/store',[InvoiceController::class, 'store']);
+    // Route::get('/invoice-details', function () {
+        //     return view('Admin.invoice_details');
+        //Route::post('/bill',[InvoiceController::class, 'bill']);
+        Route::get('/bill', [InvoiceController::class, 'bill']);
+    Route::post('/checkout',[InvoiceController::class, 'checkout']);
+
+    // Route::get('/noreport', [InvoiceController::class, 'noreport']);
+
+    Route::get('/report', [InvoiceController::class, 'reportview']);
+    // Route::get('/report', [InvoiceController::class, 'reportview2']);
+
+
 
 });
 
 
 //Logout Section
-Route::get('logout', [LogintController::class,'logout']);
+Route::get('plogout', [LogintController::class,'plogout']);
 Route::get('logout', [AdminController::class,'logout']);
-
 
 

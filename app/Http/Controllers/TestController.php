@@ -60,7 +60,7 @@ function test(){
 
 
 
-    function ptest(){
+     function ptest(){
         $tests = DB::table('tests')->get();
           return view('patient.layouts.ptest', compact('tests'));
           }

@@ -4,12 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <title>Patient Login Form</title>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg mynav">
+
+
+  <a class="navbar-brand" href="{{url('/')}}">Diagnostic Center</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <ul class="navbar-nav ">
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+     
+      <li class="nav-item ">
+        <a class="nav-link" href="{{ url('plogin') }}" >
+          Login
+        </a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('registration') }}">Registration</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#">Contact Us</a>
+      </li>
+
+
+    </ul>
+  </div>
+</nav>
 
 <div class="container">
         <div class="card card-container">
@@ -24,7 +57,7 @@
 
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                <input type="password" name="password" class="form-control" placeholder="Password" required><br><br>
                 
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Log in</button>
             </form>
@@ -35,8 +68,8 @@
         </div>
         @endif
         <br><br>
-        <a class="btn btn-outline-warning" href="{{ url('registration') }}">Register</a><br>
-        <a class="btn btn-outline-info" href="{{ url('/') }}">Go To Home...</a>
+        <!-- <a class="btn btn-outline-warning" href="{{ url('registration') }}">Register</a><br> -->
+        
         
         </div>
 

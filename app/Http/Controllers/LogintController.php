@@ -30,6 +30,11 @@ class LogintController extends Controller
 
         $r ->session()->put('username', $user-> name);
         $r ->session()->put('useremail', $user-> email);
+        $r ->session()->put('userpass', $user-> password);
+        $r ->session()->put('address', $user-> address);
+        $r ->session()->put('birthdate', $user-> birth_date);
+        $r ->session()->put('gender', $user-> gender);
+        
         
 
          return redirect()->to('pdashboard');
@@ -41,7 +46,7 @@ class LogintController extends Controller
     
     }
 
-    function logout()
+    function plogout()
 {
     Session::forget(['username', 'useremail']);
     return redirect()->to('plogin');

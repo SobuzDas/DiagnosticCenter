@@ -28,7 +28,7 @@
       <a class="nav-link" href="#">Contact Us</a>
     </li>
     <li class="nav-item">
-    <a class="btn btn-danger" href="{{ url('logout')}}">Logout</a>
+    <a class="btn btn-danger" href="{{ url('plogout')}}">Logout</a>
 
     </li>
 
